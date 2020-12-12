@@ -1,6 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
+    darkMode: 'media',
     theme: {
         extend: {
             fontFamily: {
@@ -27,7 +28,8 @@ module.exports = {
         },
     },
     plugins: [
-        require('@tailwindcss/ui'),
         require('@tailwindcss/typography'),
+        require('@tailwindcss/forms'),
+        require('@tailwindcss/aspect-ratio'),
     ],
 };
