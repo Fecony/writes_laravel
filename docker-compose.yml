@@ -1,7 +1,7 @@
 # For more information: https://laravel.com/docs/sail
 version: '3'
 services:
-    writes.test:
+    laravel.test:
         build:
             context: ./vendor/laravel/sail/runtimes/8.0
             dockerfile: Dockerfile
@@ -28,7 +28,7 @@ services:
     #     networks:
     #         - sail
     #     depends_on:
-    #         - writes.test
+    #         - laravel.test
     mysql:
         image: 'mysql:8.0'
         ports:

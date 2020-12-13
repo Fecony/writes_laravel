@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\TwitterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,3 +15,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'welcome')->name('home');
+
+Route::group(['middleware' => 'guest'], function () {
+    Route::get('/twitter', [TwitterController::class, 'redirect'])->name('twitter.login');
+    Route::get('/twitter/callback', [TwitterController::class, 'callback']);
+});
+
+Route::get('/logout', function() {
+    auth()->logout();
+    return redirect('/');
+});
+
+Route::get('/tweet', function() {
+    return Twitter::postTweet(['status' => 'hello', 'format' => 'json']);
+});
