@@ -21,11 +21,30 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/twitter/callback', [TwitterController::class, 'callback']);
 });
 
-Route::get('/logout', function() {
+Route::get('/logout', function () {
     auth()->logout();
     return redirect('/');
 });
 
-Route::get('/tweet', function() {
-    return Twitter::postTweet(['status' => 'hello', 'format' => 'json']);
+Route::get('/tweet', function () {
+
+    $tweets = [
+        'tweet 1',
+        'tweet 2',
+    ];
+
+    $lastId = null;
+
+//    foreach ($tweets as $tweet) {
+//        $response = Twitter::postTweet([
+//            'status' => $tweet,
+//            'format' => 'object',
+//            'in_reply_to_status_id' => $lastId
+//        ]);
+//
+//        $lastId = $response->id;
+//    }
+
+//    $tw = Twitter::postTweet(['status' => 'hel2los', 'format' => 'object']);
+//    dd($tw, $tw->id);
 });
