@@ -14,7 +14,7 @@
  *
  * See: https://github.com/laravel-frontend-presets/tall/issues/7
  */
- input:invalid, textarea:invalid, select:invalid {
+input:invalid, textarea:invalid, select:invalid {
     box-shadow: none;
 }
 
@@ -50,6 +50,24 @@
  * .skew-45 { ... }
  */
 
-[x-cloak] {
+/* always hidden */
+[x-cloak=""] {
     display: none;
+}
+
+/* hidden on mobile/smaller screens */
+@media screen and (max-width: 768px) {
+    [x-cloak="mobile"] {
+        display: none;
+    }
+}
+
+@import "~quill/dist/quill.core.css";
+
+.ql-container.ql-snow {
+    @apply rounded-2xl border-none;
+}
+
+.ql-editor {
+    @apply w-full h-full outline-none resize-none border border-warmGray-100 bg-coolGray-50 focus:border-blue-600 hover:border-blue-600 transition duration-300 rounded-2xl p-5 text-trueGray-600 placeholder-trueGray-400 text-4xl;
 }

@@ -1,26 +1,34 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors');
 
 module.exports = {
-    darkMode: 'media',
+    darkMode: 'class',
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+                sans: ['Inter', ...defaultTheme.fontFamily.sans],
             },
+            spacing: {
+                '0.25': '0.063rem',
+                '14.5': '3.625rem',
+                '19': '4.75rem',
+                '90': '22.5rem',
+            },
+            colors: {
+                'twitter': '#1DA1F2',
+                'twitter-light': '#1A91DA',
+            }
         },
+        colors: {
+            transparent: "transparent",
+            current: "currentColor",
+            ...colors
+        }
     },
     variants: {},
     purge: {
         content: [
-            './app/**/*.php',
-            './resources/**/*.html',
-            './resources/**/*.js',
-            './resources/**/*.jsx',
-            './resources/**/*.ts',
-            './resources/**/*.tsx',
             './resources/**/*.php',
-            './resources/**/*.vue',
-            './resources/**/*.twig',
         ],
         options: {
             defaultExtractor: (content) => content.match(/[\w-/.:]+(?<!:)/g) || [],
@@ -31,5 +39,6 @@ module.exports = {
         require('@tailwindcss/typography'),
         require('@tailwindcss/forms'),
         require('@tailwindcss/aspect-ratio'),
+        require('tailwindcss-debug-screens'),
     ],
 };
